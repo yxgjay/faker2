@@ -43,10 +43,10 @@ let tuanActiveId = ``, hasSend = false;
 const jxOpenUrl = `openjd://virtual?params=%7B%20%22category%22:%20%22jump%22,%20%22des%22:%20%22m%22,%20%22url%22:%20%22https://wqsd.jd.com/pingou/dream_factory/index.html%22%20%7D`;
 let cookiesArr = [], cookie = '', message = '', allMessage = '';
 const inviteCodes = [
-  '',
-  '',
-  '',
-  '',
+  'pzC2M91bf7yy2xiXjIB6oQ==@ZXgXhDa7nObMsBQHPnewkA==@k_8dhiKjnMB6Y6uEvNOU8Q==@_YggrEq7BEsxxMasePcayQ==@xsVrTjK0eoHON5sf8i1PLw==@5AXMYYZbDOvBzchAIq96kA==@w-R1LT7yRG4z9jfmGee-Bg==@a8rTMHFtniGUWbJ2zwgeHg==',
+  'pzC2M91bf7yy2xiXjIB6oQ==@ZXgXhDa7nObMsBQHPnewkA==@k_8dhiKjnMB6Y6uEvNOU8Q==@_YggrEq7BEsxxMasePcayQ==@xsVrTjK0eoHON5sf8i1PLw==@5AXMYYZbDOvBzchAIq96kA==@w-R1LT7yRG4z9jfmGee-Bg==@a8rTMHFtniGUWbJ2zwgeHg==',
+  'pzC2M91bf7yy2xiXjIB6oQ==@ZXgXhDa7nObMsBQHPnewkA==@k_8dhiKjnMB6Y6uEvNOU8Q==@_YggrEq7BEsxxMasePcayQ==@xsVrTjK0eoHON5sf8i1PLw==@5AXMYYZbDOvBzchAIq96kA==@w-R1LT7yRG4z9jfmGee-Bg==@a8rTMHFtniGUWbJ2zwgeHg==',
+  'pzC2M91bf7yy2xiXjIB6oQ==@ZXgXhDa7nObMsBQHPnewkA==@k_8dhiKjnMB6Y6uEvNOU8Q==@_YggrEq7BEsxxMasePcayQ==@xsVrTjK0eoHON5sf8i1PLw==@5AXMYYZbDOvBzchAIq96kA==@w-R1LT7yRG4z9jfmGee-Bg==@a8rTMHFtniGUWbJ2zwgeHg==',
 ];
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
 $.tuanIds = [];

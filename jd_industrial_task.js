@@ -43,7 +43,7 @@ const rd_char = "0123456789abcdefghijklmnopqrstuvwxyz"
         }
         continue
       }
-	  $.configCode = `f11f0375da524037a3e7e1da6cb4510b`
+	  $.configCode = ``
 	  $.eid = randomEid()
 	  $.fp = randomString(32,rd_char)
 	  if ($.eid !== null || $.eid !== undefined || $.eid !== '') {

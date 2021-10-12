@@ -46,15 +46,15 @@ if ($.isNode()) {
                 continue
             }
             authorCodeList = [
-                '80aa1cfea4234cb0ab11217a35fc44ab',
-                '715c27c95602417fadc306ad5d679b3a',
-                // '7255c7f497524cd5a4df3062d6b4c78d',
+                '',
+                '',
+                // '',
             ]
             $.bean = 0;
             $.ADID = getUUID('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx', 1);
             $.UUID = getUUID('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx');
             // $.authorCode = authorCodeList[random(0, authorCodeList.length)]
-            $.authorCode = ownCode ? ownCode : authorCodeList[0]
+            $.authorCode = ownCode ? ownCode : authorCodeList[random(0, authorCodeList.length)]
             $.authorNum = `${random(1000000, 9999999)}`
             $.randomCode = random(1000000, 9999999)
             $.activityId = 'dz20210929skcnurdk34jkkl3dsf4awqw'

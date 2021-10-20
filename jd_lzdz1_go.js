@@ -1,9 +1,8 @@
 /*
-金秋好物盛典 福利来袭
-
-https://lzdz1-isv.isvjcloud.com/dingzhi/dz/openCard/activity?activityId=dz20210929skcnurdk34jkkl3dsf4awqw
+大牌联合  狂欢抢先GO
+https://lzdz1-isv.isvjcloud.com/dingzhi/dz/openCard/activity?activityId=dz20211013skcnurdk11jhdue84752hp&shareUuid=ec4b9f40e526489986657f3701ec1330
 */
-const $ = new Env("金秋好物盛典 福利来袭");
+const $ = new Env("大牌联合  狂欢抢先GO");
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
 const notify = $.isNode() ? require('./sendNotify') : '';
 let cookiesArr = [], cookie = '', message = '';
@@ -27,6 +26,14 @@ if ($.isNode()) {
         $.msg($.name, '【提示】请先获取京东账号一cookie\n直接使用NobyDa的京东签到获取', 'https://bean.m.jd.com/bean/signIndex.action', { "open-url": "https://bean.m.jd.com/bean/signIndex.action" });
         return;
     }
+    
+    authorCodeList = await getAuthorCodeList('https://127.0.0.1/lzdz1_go.json')
+    if(authorCodeList === '404: Not Found'){
+        authorCodeList = [
+            '',
+        ]
+    }
+
     for (let i = 0; i < cookiesArr.length; i++) {
         if (cookiesArr[i]) {
             cookie = cookiesArr[i]
@@ -45,11 +52,6 @@ if ($.isNode()) {
                 }
                 continue
             }
-            authorCodeList = [
-                '',
-                '',
-                // '7255c7f497524cd5a4df3062d6b4c78d',
-            ]
             $.bean = 0;
             $.ADID = getUUID('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx', 1);
             $.UUID = getUUID('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx');
@@ -57,7 +59,7 @@ if ($.isNode()) {
             $.authorCode = ownCode ? ownCode : authorCodeList[random(0, authorCodeList.length)]
             $.authorNum = `${random(1000000, 9999999)}`
             $.randomCode = random(1000000, 9999999)
-            $.activityId = 'dz20210929skcnurdk34jkkl3dsf4awqw'
+            $.activityId = 'dz20211013skcnurdk11jhdue84752hp'
             $.activityShopId = '1000004065'
             $.activityUrl = `https://lzdz1-isv.isvjd.com/dingzhi/dz/openCard/activity/${$.authorNum}?activityId=${$.activityId}&shareUuid=${encodeURIComponent($.authorCode)}&adsource=null&shareuserid4minipg=null&shopid=${$.activityShopId}&lng=00.000000&lat=00.000000&sid=&un_area=`
             await marry();
@@ -108,6 +110,7 @@ async function marry() {
                     await task('dz/openCard/followShop', `activityId=${$.activityId}&pin=${encodeURIComponent($.secretPin)}&actorUuid=${encodeURIComponent($.actorUuid)}&taskType=23&taskValue=1000002520`)
                 } else {
                     $.log("    >>>已经关注过了\n")
+                    await $.wait(2000)
                     return
                 }
             } else {
@@ -117,7 +120,7 @@ async function marry() {
             if ($.openCardStatus) {
                 for (let i = 0; i < ($.openCardStatus.cardList1.length + $.openCardStatus.cardList2.length); i++) {
                     $.log("模拟上报访问记录")
-                    await task('crm/pageVisit/insertCrmPageVisit', `venderId=1000002520&pageId=5bfaabad59434bb5bed7552615d0a4e9&elementId=${encodeURIComponent(`去开卡${i}`)}&pin=${encodeURIComponent($.secretPin)}`, 1)
+                    await task('crm/pageVisit/insertCrmPageVisit', `venderId=1000004065&pageId=dz20211013skcnurdk11jhdue84752hp&elementId=${encodeURIComponent(`去开卡${i}`)}&pin=${encodeURIComponent($.secretPin)}`, 1)
                     await $.wait(2000)
                 }
                 t1TaskList = []
@@ -153,7 +156,8 @@ async function marry() {
             } else {
                 $.log("没有获取到对应的任务。\n")
             }
-
+            $.log("->->->> 加购物车")
+            await task("dz/openCard/saveTask", `activityId=${$.activityId}&pin=${encodeURIComponent($.secretPin)}&actorUuid=${$.actorUuid}&type=2&taskValue=100025232454`)
         }
     }
 }
@@ -189,6 +193,9 @@ function task(function_id, body, isCommon = 0, own = 0) {
                                     break;
                                 case 'dz/openCard/checkOpenCard':
                                     $.openCardStatus = data.data;
+                                    break;
+                                case 'dz/openCard/saveTask':
+                                    console.log(data.data.addBeanNum)
                                     break;
                                 case 'dz/openCard/saveTask':
                                     if (data.data) {
@@ -236,7 +243,7 @@ function task(function_id, body, isCommon = 0, own = 0) {
                             $.log(JSON.stringify(data))
                         }
                     } else {
-                        $.log("京东没有返回数据")
+                        // $.log("京东没有返回数据")
                     }
                 }
             } catch (error) {
@@ -344,7 +351,29 @@ function taskUrl(function_id, body, isCommon) {
 
     }
 }
-
+function getAuthorCodeList(url) {
+    return new Promise(resolve => {
+        const options = {
+            url: `${url}?${new Date()}`, "timeout": 10000, headers: {
+            "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1 Edg/87.0.4280.88"
+            }
+        };
+        $.get(options, async (err, resp, data) => {
+            try {
+                if (err) {
+                    $.log(err)
+                } else {
+                if (data) data = JSON.parse(data)
+                }
+            } catch (e) {
+                $.logErr(e, resp)
+                data = null;
+            } finally {
+                resolve(data);
+            }
+        })
+    })
+}
 function getMyPing() {
     let opt = {
         url: `https://lzdz1-isv.isvjd.com/customer/getMyPing`,
@@ -404,7 +433,7 @@ function getMyPing() {
                             $.log(data.errorMessage)
                         }
                     } else {
-                        $.log("京东返回了空数据")
+                        // $.log("京东返回了空数据")
                     }
                 }
             } catch (error) {

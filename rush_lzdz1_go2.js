@@ -28,7 +28,9 @@ if ($.isNode()) {
         return;
     }
     
- authorCodeList = ['c619150724514846b38c522f47c49094',]
+authorCodeList = [
+            'a0dc7f915957431da67194cd980f416f',
+        ]
 
     for (let i = 0; i < cookiesArr.length; i++) {
         if (cookiesArr[i]) {

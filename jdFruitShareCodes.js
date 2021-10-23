@@ -7,15 +7,15 @@
 // 同一个京东账号的好友互助码用@符号隔开,不同京东账号之间用&符号或者换行隔开,下面给一个示例
 // 如: 京东账号1的shareCode1@京东账号1的shareCode2&京东账号2的shareCode1@京东账号2的shareCode2
 let FruitShareCodes = [
-  '80ec0645077248749bdf9e5e933b8031@b82f703af54c4cae8a02ca0b7c4fda6d@8402e85f7cdd404cb6fb0f0663fa1223@26bc31e619c24aa682774681b1bdee4e@7f70849f466647ba870734322892189f',//账号一的好友shareCode,不同好友中间用@符号隔开
-  '80ec0645077248749bdf9e5e933b8031@b82f703af54c4cae8a02ca0b7c4fda6d@8402e85f7cdd404cb6fb0f0663fa1223@26bc31e619c24aa682774681b1bdee4e@7f70849f466647ba870734322892189f',//账号二的好友shareCode，不同好友中间用@符号隔开
+  '',//账号一的好友shareCode,不同好友中间用@符号隔开
+  '',//账号二的好友shareCode，不同好友中间用@符号隔开
 ]
 
 // 从日志获取互助码
-// const logShareCodes = require('./utils/jdShareCodes');
-// if (logShareCodes.FRUITSHARECODES.length > 0 && !process.env.FRUITSHARECODES) {
-//   process.env.FRUITSHARECODES = logShareCodes.FRUITSHARECODES.join('&');
-// }
+const logShareCodes = require('./utils/jdShareCodes');
+if (logShareCodes.FRUITSHARECODES.length > 0 && !process.env.FRUITSHARECODES) {
+  process.env.FRUITSHARECODES = logShareCodes.FRUITSHARECODES.join('&');
+ }
 
 // 判断github action里面是否有东东农场互助码
 if (process.env.FRUITSHARECODES) {

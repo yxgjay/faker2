@@ -28,12 +28,7 @@ if ($.isNode()) {
         return;
     }
     
-    authorCodeList = await getAuthorCodeList('https://127.0.0.1/lzdz1_go2.json')
-    if(authorCodeList === '404: Not Found'){
-        authorCodeList = [
-            'a0dc7f915957431da67194cd980f416f',
-        ]
-    }
+ authorCodeList = ['',]
 
     for (let i = 0; i < cookiesArr.length; i++) {
         if (cookiesArr[i]) {

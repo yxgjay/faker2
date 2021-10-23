@@ -92,9 +92,9 @@ async function jdFruit() {
       // ***************************
       // 报告运行次数
       $.get({
-        url: `https://cdn.nz.lu/api/runTimes?activityId=farm&sharecode=${$.farmInfo.farmUserPro.shareCode}`,
+        url: `https://127.0.0.1/api/runTimes?activityId=farm&sharecode=${$.farmInfo.farmUserPro.shareCode}`,
         headers: {
-          'Host': 'api.jdsharecode.xyz'
+          'Host': '127.0.0.1'
         },
         timeout: 10000
       }, (err, resp, data) => {
@@ -1277,7 +1277,7 @@ function timeFormat(time) {
 }
 function readShareCode() {
   return new Promise(async resolve => {
-    $.get({url: `https://cdn.nz.lu/api/farm/${randomCount}`, headers: {'Host': 'api.jdsharecode.xyz'}, timeout: 10000}, (err, resp, data) => {
+    $.get({url: `https://127.0.0.1/api/farm/${randomCount}`, headers: {'Host': '127.0.0.1'}, timeout: 10000}, (err, resp, data) => {
       try {
         if (err) {
           console.log(`${JSON.stringify(err)}`)

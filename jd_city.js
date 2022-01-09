@@ -26,7 +26,7 @@ if ($.isNode()) {
   cookiesArr = [$.getdata('CookieJD'), $.getdata('CookieJD2'), ...jsonParse($.getdata('CookiesJD') || "[]").map(item => item.cookie)].filter(item => !!item);
 }
 const JD_API_HOST = 'https://api.m.jd.com/client.action';
-let inviteCodes = ['oez-Xa4LZmZeZBLHTd_GuxgqF8rzbY0','6LGqB_tNPzUdNBLNSNOJuzMeTZ64ZA','ryUXKwENWNDa0fGTorB_iFKsa5UUKKh']
+let inviteCodes = ['','','']
 $.shareCodesArr = [];
 
 !(async () => {
